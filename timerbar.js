@@ -1,7 +1,3 @@
-// Timer Bar - Version 1.0
-// Author: Brian Gosselin of http://scriptasylum.com
-// Script featured on http://www.dynamicdrive.com
-
 var loadedcolor='blue' ;       // PROGRESS BAR COLOR
 var unloadedcolor='lightgrey';     // COLOR OF UNLOADED AREA
 var bordercolor='navy';            // COLOR OF THE BORDER

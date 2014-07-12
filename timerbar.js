@@ -20,17 +20,13 @@ var clickCount = 0;
 
 var action=function()
 {
-    if (loaded == (10 * waitTime) && clickCount >= 2) {
+   if (loaded == (10 * waitTime) && clickCount == 1) {
         levelup();
         return false;
-    }
-    else if (loaded == (10 * waitTime)) {
-        alert("Download Complete")    
-    } else if(clickCount == 1) {
-        clickCount++;
-        alert("HEY! Stop that!");
-        progressBarInit();
-    } else if (clickCount == 2) {
+    } 
+    else if (loaded == (10 * waitTime) && gameOver == false && clickCount == 0) {
+        alert("Download Complete")  
+    } else if (clickCount == 1) {
         openTerminal();
         loaded = 0;
         progressBarInit();

@@ -1,3 +1,7 @@
+// Timer Bar - Version 1.0
+// Author: Brian Gosselin of http://scriptasylum.com
+// Script featured on http://www.dynamicdrive.com
+
 var loadedcolor='blue' ;       // PROGRESS BAR COLOR
 var unloadedcolor='lightgrey';     // COLOR OF UNLOADED AREA
 var bordercolor='navy';            // COLOR OF THE BORDER
@@ -16,10 +20,14 @@ var clickCount = 0;
 
 var action=function()
 {
-    
-    if (loaded == 200) {
+    if (loaded == (10 * waitTime) && clickCount >= 2) {
+        levelup();
+        return false;
+    }
+    else if (loaded == (10 * waitTime)) {
         alert("Download Complete")    
     } else if(clickCount == 1) {
+        clickCount++;
         alert("HEY! Stop that!");
         progressBarInit();
     } else if (clickCount == 2) {
@@ -27,6 +35,7 @@ var action=function()
         loaded = 0;
         progressBarInit();
     } else {
+        clickCount++;
         progressBarInit();
     }
 }
@@ -50,31 +59,39 @@ function incrementCount() {
 //**********  DO NOT EDIT BEYOND THIS POINT  **********//
 //*****************************************************//
 
-var ns4=(document.layers)?true:false;
-var ie4=(document.all)?true:false;
-var blocksize=(barwidth-2)/waitTime/10;
-var loaded=0;
+var ns4;
+var ie4;
+var blocksize;
+var loaded;
 var PBouter;
 var PBdone;
 var PBbckgnd;
-var Pid=0;
-var txt='';
-if(ns4){
-txt+='<table border=0 cellpadding=0 cellspacing=0><tr><td>hello world';
-txt+='<ilayer name="PBouter" visibility="hide" height="'+barheight+'" width="'+barwidth+'" onmouseup="hidebar()" onclick="clickCount++"><p>hello world</p>';
-txt+='<layer width="'+barwidth+'" height="'+barheight+'" bgcolor="'+bordercolor+'" top="0" left="0"><p>hello world</p></layer>';
-txt+='<layer width="'+(barwidth-2)+'" height="'+(barheight-2)+'" bgcolor="'+unloadedcolor+'" top="1" left="1"><p>hello world</p></layer>';
-txt+='<layer name="PBdone" width="'+(barwidth-2)+'" height="'+(barheight-2)+'" bgcolor="'+loadedcolor+'" top="1" left="1"><p>hello world</p></layer>';
-txt+='</ilayer>';
-txt+='</td></tr></table>';
-}else{
-txt+='<div id="PBouter" onmouseup="hidebar()" onclick="clickCount++" style="position:relative; visibility:hidden; background-color:'+bordercolor+'; width:'+barwidth+'px; height:'+barheight+'px;">';
-txt+='<div style="position:absolute; top:1px; left:1px; width:'+(barwidth-2)+'px; height:'+(barheight-2)+'px; background-color:'+unloadedcolor+'; font-size:1px;"></div>';
-txt+='<div id="PBdone" style="position:absolute; top:1px; left:1px; width:0px; height:'+(barheight-2)+'px; background-color:'+loadedcolor+'; font-size:1px;"></div>';
-txt+='</div>';
+var Pid;
+
+function draw() {
+    ns4=(document.layers)?true:false;
+    ie4=(document.all)?true:false;
+    blocksize=(barwidth-2)/waitTime/10;
+    loaded=0;
+    Pid=0;
+    txt='';
+    if(ns4){
+    txt+='<table border=0 cellpadding=0 cellspacing=0><tr><td>hello world';
+    txt+='<ilayer name="PBouter" visibility="hide" height="'+barheight+'" width="'+barwidth+'" onmouseup="hidebar()" onclick="clickCount++; alert(clickCount)"><p>hello world</p>';
+    txt+='<layer width="'+barwidth+'" height="'+barheight+'" bgcolor="'+bordercolor+'" top="0" left="0"><p>hello world</p></layer>';
+    txt+='<layer width="'+(barwidth-2)+'" height="'+(barheight-2)+'" bgcolor="'+unloadedcolor+'" top="1" left="1"><p>hello world</p></layer>';
+    txt+='<layer name="PBdone" width="'+(barwidth-2)+'" height="'+(barheight-2)+'" bgcolor="'+loadedcolor+'" top="1" left="1"><p>hello world</p></layer>';
+    txt+='</ilayer>';
+    txt+='</td></tr></table>';
+    }else{
+    txt+='<div id="PBouter" onmouseup="hidebar()" onclick="clickCount++; alert(clickCount)" style="position:relative; visibility:hidden; background-color:'+bordercolor+'; width:'+barwidth+'px; height:'+barheight+'px;">';
+    txt+='<div style="position:absolute; top:1px; left:1px; width:'+(barwidth-2)+'px; height:'+(barheight-2)+'px; background-color:'+unloadedcolor+'; font-size:1px;"></div>';
+    txt+='<div id="PBdone" style="position:absolute; top:1px; left:1px; width:0px; height:'+(barheight-2)+'px; background-color:'+loadedcolor+'; font-size:1px;"></div>';
+    txt+='</div>';
+    }
+    document.getElementById('timebar').innerHTML = txt;
 }
 
-document.write(txt);
 
 function incrCount(){
 window.status="Loading...";
@@ -110,6 +127,7 @@ return null;
 }
 
 function progressBarInit(){
+draw();
 PBouter=(ns4)?findlayer('PBouter',document):(ie4)?document.all['PBouter']:document.getElementById('PBouter');
 PBdone=(ns4)?PBouter.document.layers['PBdone']:(ie4)?document.all['PBdone']:document.getElementById('PBdone');
 resizeEl(PBdone,0,0,barheight-2,0);

@@ -1373,6 +1373,7 @@ float: top;
     background: #000;
     color: #04B404;
     height: 300px;
+    overflow:scroll;
 }
 
 #terminal input {

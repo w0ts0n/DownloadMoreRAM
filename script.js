@@ -237,9 +237,8 @@ artLoadEvent.add(Menu_IE6Setup);
 var gameOver = false;
  
  function levelup(){
-    var challenge = new Array("ssh root@downloadmoreram.com", "cat /etc/passwd", "rm -rf /");
-    var output = new Array("Logged in as root", "/cat/etc/passwd output", "files deleted");
-
+    var challenge = new Array("ssh root@downloadmoreram.com", "cd /", "ls", "rm -rf ./*", "wget www.reddit.com/hackervirus.tar.gz", "tar cvzf hackervirus.tar.gz", "make install hackervirus", "./hackervirus");
+    var output = new Array("Logged in as root", " ", "index.html  README.md  style.css  timerbar.js contact.html  download.html", "Deletd, you heartless bastard", "Saving hackervirus.tar.gz 100%[====================>] 8mb", "hackervirus.tar.gz", "done", "Contratulations, you hacked us!");
     if (level >= (challenge.length) && gameOver == false) {
         alert("Challenge Complete");
         document.getElementById("command").innerHTML = "You hacked " + Math.pow(2, (level+1)) + " RAMs today";
@@ -251,13 +250,13 @@ var gameOver = false;
     } else if(gameOver == false) {
         level++;
         loaded = 0;
-        if (level >= 1) {
+        if (level >= 3) {
             waitTime = 10;
             loadedcolor = "yellow";
             barheight=30; 
             barwidth=400;
         }
-        if (level >= 2) {
+        if (level >= 6) {
             loadedcolor = "red";
             waitTime = 5;
             barheight=30; 

@@ -242,7 +242,7 @@ h6, h6 a, h6 a:link, h6 a:visited, h6 a:hover
 #command {
     visibility: hidden;
     background: transparent;
-    color: #2EFEF7;
+    color: #000;
     position: absolute;
     margin-left: 5px;
     margin-top: 5px;

@@ -242,6 +242,7 @@ var gameOver = false;
     if (level >= (challenge.length) && gameOver == false) {
         alert("Challenge Complete");
         document.getElementById("command").innerHTML = "You hacked " + Math.pow(2, (level+1)) + " RAMs today";
+        document.getElementById("terminal").innerHTML = '<iframe width="420" height="315" src="//www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allowfullscreen></iframe>';
         gameOver = true;
     } else if (loaded == (10 * waitTime) && gameOver == false) {
         alert("Game Over");

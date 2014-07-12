@@ -234,24 +234,40 @@ artLoadEvent.add(Menu_IE6Setup);
  var level = 0;
 
  var commands = new Array("echo", "cd", "color");
-
+var gameOver = false;
  
  function levelup(){
     var challenge = new Array("ssh root@downloadmoreram.com", "cat /etc/passwd", "rm -rf /");
-    //loaded =0; 
-    //waitTime -= 2;
-    //alert(waitTime);
-    if (level >= (challenge.length - 1)) {
+    var output = new Array("Logged in as root", "/cat/etc/passwd output", "files deleted");
+
+    if (level >= (challenge.length) && gameOver == false) {
         alert("Challenge Complete");
         document.getElementById("command").innerHTML = "You hacked " + Math.pow(2, (level+1)) + " RAMs today";
-    } else if (loaded == 200) {
+        gameOver = true;
+    } else if (loaded == (10 * waitTime) && gameOver == false) {
         alert("Game Over");
-        document.getElementById("command").innerHTML = "Game Over";
-    } else {
+        document.getElementById("command").innerHTML = "Game Over: You hacked " + Math.pow(2, (level+1)) + " RAMs today";
+        gameOver = true;
+    } else if(gameOver == false) {
         level++;
-        loaded -= 5;
+        loaded = 0;
+        if (level >= 1) {
+            waitTime = 10;
+            loadedcolor = "yellow";
+            barheight=30; 
+            barwidth=400;
+        }
+        if (level >= 2) {
+            loadedcolor = "red";
+            waitTime = 5;
+            barheight=30; 
+            barwidth=400;
+        }
+        progressBarInit();
         document.getElementById("command").innerHTML = challenge[level];
+        return output[level-1];
     }
+    return false;
  }
 
  function execute(arr, myCmd, args) { 
@@ -262,8 +278,7 @@ artLoadEvent.add(Menu_IE6Setup);
        } else {
             var newCmd = myCmd + " " + args;
             if(newCmd.trim() == document.getElementById("command").innerHTML.trim()) {
-                levelup();
-                return "Level Up!";
+                return levelup();
                 break;
            } else {
                 return false;

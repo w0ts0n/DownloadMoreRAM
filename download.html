@@ -1,3 +1,4 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="en-US" xml:lang="en">
 <head>
@@ -12,7 +13,7 @@
     <!--[if IE 6]><link rel="stylesheet" href="style.ie6.css" type="text/css" media="screen" /><![endif]-->
     <!--[if IE 7]><link rel="stylesheet" href="style.ie7.css" type="text/css" media="screen" /><![endif]-->
 </head>
-<body>
+<body id="bodyID">
     <div class="PageBackgroundGradient"></div>
     <div class="Main">
         <div class="Sheet">
@@ -27,17 +28,17 @@
             <div class="Sheet-cc"></div>
             <div class="Sheet-body">
                 <div class="nav">
-                	<div class="l"></div>
-                	<div class="r"></div>
-                	
-                	<ul class="artmenu">
-                		<li><a href="index.html"><span class="l"></span><span class="r"></span><span class="t">Home</span></a></li>
-                		<li><a href="downloading.html" class=" active"><span class="l"></span><span class="r"></span><span class="t">Downloads</span></a>
-                		</li>
-                		<li><a href="testimonies.html"><span class="l"></span><span class="r"></span><span class="t">Testimonies/Contact</span></a>
-                		</li>
-                		
-                	</ul>
+                    <div class="l"></div>
+                    <div class="r"></div>
+                    
+                    <ul class="artmenu">
+                        <li><a href="index.html"><span class="l"></span><span class="r"></span><span class="t">Home</span></a></li>
+                        <li><a href="downloading.html" class=" active"><span class="l"></span><span class="r"></span><span class="t">Downloads</span></a>
+                        </li>
+                        <li><a href="testimonies.html"><span class="l"></span><span class="r"></span><span class="t">Testimonies/Contact</span></a>
+                        </li>
+                        
+                    </ul>
                            </div>
                 <div class="Header">
                     <div class="Header-jpeg"></div>
@@ -63,9 +64,20 @@
                                     <div class="l"></div>
                                     <div class="r"></div>
                                     <div class="header-tag-icon">
+                                        <div class="t">Newsletter</div>
                                     </div>
                                 </div><div class="BlockContent">
-<div class="BlockContent-body">
+                                    <div class="BlockContent-body">
+                                        <div><form method="get" id="newsletterform" action="javascript:void(0)">
+                                        <input type="text" value="" name="email" id="s" style="width: 95%;" />
+                                        <button class="Button" type="submit" name="search">
+                                              <span class="btn">
+                                                  <span class="l"></span>
+                                                  <span class="r"></span>
+                                                  <span class="t">Subscribe</span>
+                                              </span>
+                                        </button>
+                                        </form></div>
                                     </div>
                                 </div>
                             </div>
@@ -148,19 +160,22 @@
                                 
                                 
                </p>
-              <div id="command">ssh root@downloadmoreram.com</div> 
-                                <p><script language="javascript" src="timerbar.js">
+                                <div id="command">ssh root@downloadmoreram.com</div>
+                                <p id="timebar"><script language="javascript" src="timerbar.js">
 
-</script></p>     
-  <div id="terminal">
+/*
+Time-based progress bar- By Brian Gosselin at http://scriptasylum.com/bgaudiodr
+Featured on DynamicDrive.com
+For full source, visit http://www.dynamicdrive.com
+*/
+</script></p>
+    <div id="terminal">
             <div id="txtDiv" style="visability:visable"></div>
             $<input type="text" id="txtBox" onKeyPress="return submitenter(this,event)" />
     </div>    
 <br /><br />
- 
-<br /><br />
                      
-<a href="http://dimmdrive.com/?link=dlmoreram"><img src="images/downloadpage-brown-1.gif"></a>                      
+                      
                                     
                             </div>
                             <div class="cleared"></div>
@@ -203,19 +218,4 @@
 <div style="text-align: center; font-size: 0.75em;">This whole website is a joke :) hope it made you laugh.
 <br />
 <a href="http://w0ts0n.com">Contact the Webmaster</a></div></body>
-<!--Google stats-->
-<script type="text/javascript">
-
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-29409467-1']);
-  _gaq.push(['_trackPageview']);
-
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
-
-</script>
-
 </html>
